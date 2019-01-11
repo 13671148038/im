@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaiyun.dao.VersionDao">
+
+	<sql id="tableName">version</sql>	
+	<!-- <insert id="add">
+		insert into <include refid="tableName"></include>
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="taskType !=null">taskType,</if>
+			<if test="startTime !=null">startTime,</if>
+			<if test="week !=null">week,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="taskType !=null">#{taskType},</if>
+			<if test="startTime !=null">#{startTime},</if>
+			<if test="week !=null">#{week},</if>
+		</trim>
+	</insert> -->
+	
+	<select id="getVersion" resultType="Map">
+		select userVersion,taskVersion,checkResultVersion from <include refid="tableName"></include>
+		<where>
+		id=#{id}
+		</where>
+	</select>
+	<update id="updateVersion">
+		update <include refid="tableName"></include>
+		<set>
+			<if test="userVersion !=null">userVersion=userVersion+1,</if>
+			<if test="taskVersion !=null">taskVersion=taskVersion+1,</if>
+			<if test="checkResultVersion !=null">checkResultVersion=checkResultVersion+1,</if>
+		</set>
+		<where>
+			id=#{id}
+		</where>
+	</update>
+</mapper>

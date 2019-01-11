@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaiyun.dao.TaskSubmitRecordDao">
+
+	<sql id="tableName">tasksubmitrecord</sql>	
+	
+	<insert id="add">
+		insert into <include refid="tableName"></include>
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="submitUser !=null">submitUser,</if>
+			<if test="taskId !=null">taskId,</if>
+			<if test="submitTime !=null">submitTime,</if>
+			<if test="checkTime !=null">checkTime,</if>
+			<if test="taskType !=null">taskType,</if>
+			<if test="checkResult !=null">checkResult,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="submitUser !=null">#{submitUser},</if>
+			<if test="taskId !=null">#{taskId},</if>
+			<if test="submitTime !=null">#{submitTime},</if>
+			<if test="checkTime !=null">#{checkTime},</if>
+			<if test="taskType !=null">#{taskType},</if>
+			<if test="checkResult !=null">#{checkResult},</if>
+		</trim>
+	</insert>
+	<select id="getPageDate" resultType="taskSubmitRecord">
+		select id,submitUser,taskId,submitTime,checkTime,taskType,checkResult from <include refid="tableName"></include>
+		order by id desc
+	</select>
+	<delete id="deleteRecord">
+		delete from <include refid="tableName"></include>
+		<where>
+			id = #{id}
+		</where>
+	</delete>
+	<delete id="deleteByTaskId">
+		delete from <include refid="tableName"></include>
+		<where>
+			taskId = #{taskId}
+		</where>
+	</delete>
+</mapper>

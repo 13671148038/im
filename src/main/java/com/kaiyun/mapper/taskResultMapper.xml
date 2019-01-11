@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaiyun.dao.TaskResultDao">
+
+	<sql id="tableName">taskresult</sql>	
+	
+	<insert id="add">
+		insert into <include refid="tableName"></include>
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id !=null">id,</if>
+			<if test="taskId !=null">taskId,</if>
+			<if test="checkResult !=null">checkResult,</if>
+			<if test="checkTime !=null">checkTime,</if>
+			<if test="submitTime !=null">submitTime,</if>
+			<if test="userName !=null">userName,</if>
+			<if test="type !=null">type,</if>
+			<if test="wordId !=null">wordId,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id !=null">#{id},</if>
+			<if test="taskId !=null">#{taskId},</if>
+			<if test="checkResult !=null">#{checkResult},</if>
+			<if test="checkTime !=null">#{checkTime},</if>
+			<if test="submitTime !=null">#{submitTime},</if>
+			<if test="userName !=null">#{userName},</if>
+			<if test="type !=null">#{type},</if>
+			<if test="wordId !=null">#{wordId},</if>
+		</trim>
+	</insert>
+	
+	<update id="update">
+		update <include refid="tableName"></include>
+		<set>
+			<if test="taskId != null">taskId=#{taskId},</if>
+			<if test="checkResult != null">checkResult=#{checkResult},</if>
+			<if test="checkTime != null">checkTime=#{checkTime},</if>
+			<if test="submitTime != null">submitTime=#{submitTime},</if>
+			<if test="userName != null">userName=#{userName},</if>
+			<if test="type != null">type=#{type},</if>
+			<if test="wordId != null">wordId=#{wordId},</if>
+		</set>
+		<where>
+			id=#{id}
+		</where>
+	</update>
+	<select id="getByTaskIdAndCheckTime" resultType="String">
+		select checkResult from <include refid="tableName"></include>
+		<where>
+		taskId=#{taskId} and checkTime=#{checkTime}
+		</where>
+	</select>
+	<select id="getByTaskIdAndCheckTime2" resultType="TaskResult">
+		select * from <include refid="tableName"></include>
+		<where>
+			taskId=#{taskId} and checkTime=#{checkTime}
+		</where>
+	</select>
+	<select id="getNewResult" resultType="TaskResult">
+		select taskId,checkResult from <include refid="tableName"></include>
+		<where>
+			checkTime=#{arg0} and type=#{arg1} and wordId=#{arg2}
+		</where>
+	</select>
+	<delete id="deleteByWordId">
+		delete from <include refid="tableName"></include>
+		<where>
+			wordId = #{wordId}
+		</where>
+	</delete>
+</mapper>

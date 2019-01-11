@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaiyun.dao.UserDao">
+
+<sql id="tableName">user</sql>	
+
+<select id="getUserByUserNameAndPassWord" parameterType="user" resultType="user">
+	select userName,contact from <include refid="tableName"></include>
+	<where>
+			userName=#{userName} and passWord = #{passWord}
+	</where>
+</select>
+
+<select id="getUserByUserName" resultType="user">
+	select userName,contact,name,createTime from <include refid="tableName"></include>
+	<where>
+	userName=#{userName}
+	</where>
+</select>
+<insert id="insert">
+	insert into <include refid="tableName"></include>
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+		<if test="userName !=null">userName,</if>
+		<if test="passWord !=null">passWord,</if>
+		<if test="contact !=null">contact,</if>
+		<if test="name !=null">name,</if>
+		<if test="createTime !=null">createTime,</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+		<if test="userName !=null">#{userName},</if>
+		<if test="passWord !=null">#{passWord},</if>
+		<if test="contact !=null">#{contact},</if>
+		<if test="name !=null">#{name},</if>
+		<if test="createTime !=null">#{createTime},</if>
+	</trim>
+</insert>
+
+<update id="update">
+	update <include refid="tableName"></include>
+	<set>
+		<if test="passWord != null">passWord=#{passWord},</if>
+		<if test="contact != null">contact=#{contact},</if>
+		<if test="name != null">name=#{name},</if>
+		<if test="createTime != null">createTime=#{createTime},</if>
+	</set>
+	<where>
+		userName=#{userName}
+	</where>
+</update>
+
+<select id="getPageDate" resultType="user">
+	select userName,contact,name,createTime from <include refid="tableName"></include> order by createTime desc
+	<where>
+	
+	</where>
+</select>
+
+<delete id="deleteUser">
+  delete from <include refid="tableName"></include>
+  <where>
+  	userName=#{userName}
+  </where>
+</delete>
+
+</mapper>

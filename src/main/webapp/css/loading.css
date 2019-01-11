@@ -1,0 +1,80 @@
+/*!加载动画*/
+.loadingMain{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	/*background-color: rgba(222,222,222,0.8);*/
+	background-color: transparent;
+	z-index: 99;
+}
+.loadingMain > .loading{
+	width: 130px;
+	height: 40px;
+	margin: 0 auto;
+	margin-top:250px;
+	text-align: center;
+}
+.loadingMain > .loading span{
+	display: inline-block;
+	width: 8px;
+	height: 100%;
+	border-radius: 4px;
+	background: lightblue;
+	-webkit-animation: load 1s ease infinite;
+	animation: load 1s ease infinite;
+}
+@-webkit-keyframes load{
+	0%,100%{
+		height: 40px;
+		background: lightblue;
+	}
+	50%{
+		height: 70px;
+		margin: -15px 0;
+		background: lightgreen;
+	}
+}
+.loadingMain > .loading span:nth-child(2){
+	-webkit-animation-delay:0.2s;
+	animation-delay:0.2s;
+}
+.loadingMain > .loading span:nth-child(3){
+	-webkit-animation-delay:0.4s;
+	animation-delay:0.4s;
+}
+.loadingMain > .loading span:nth-child(4){
+	-webkit-animation-delay:0.6s;
+	animation-delay:0.6s;
+}
+.loadingMain > .loading span:nth-child(5){
+	-webkit-animation-delay:0.8s;
+	animation-delay:0.8s;
+}
+
+.parent-loading {
+	position: relative;
+	width:100%;
+	height:100%;
+}
+.commitopacity{
+	/*position:absolute;
+	width:100%;
+	height:100px;
+	background:#7f7f7f;
+	filter:alpha(opacity=50);
+	-moz-opacity:0.8;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+	top:0px;
+	z-index:99999;*/
+	width: 100%;
+	height: 100%;
+	position: relative;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0);
+	/*background-color: transparent;*/
+	z-index: 99;
+}

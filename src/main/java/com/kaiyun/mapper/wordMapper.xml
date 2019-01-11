@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaiyun.dao.WordDao">
+
+	<sql id="tableName">word</sql>	
+	
+	<insert id="add">
+		insert into <include refid="tableName"></include>
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id !=null">id,</if>
+			<if test="importTime !=null">importTime,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id !=null">#{id},</if>
+			<if test="importTime !=null">#{importTime},</if>
+		</trim>
+	</insert>
+	<select id="getTopNew" resultType="String">
+		select id from <include refid="tableName"></include>
+		<where>
+		importTime=(select max(importTime) from <include refid="tableName"></include>)
+		</where>
+	</select>
+	<select id="getPageDate" resultType="Word">
+		select id,importTime from <include refid="tableName"></include>
+		<where>
+		</where>
+		order by importTime desc
+	</select>
+	<delete id="deleteById">
+		delete from <include refid="tableName"></include>
+		<where>
+			id=#{id}
+		</where>
+	</delete>
+</mapper>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaiyun.dao.TaskDao">
+
+	<sql id="tableName">task</sql>	
+	
+	<insert id="add">
+		insert into <include refid="tableName"></include>
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id !=null">id,</if>
+			<if test="columnOne !=null">columnOne,</if>
+			<if test="columnTwo !=null">columnTwo,</if>
+			<if test="columnThree !=null">columnThree,</if>
+			<if test="columnFour !=null">columnFour,</if>
+			<if test="type !=null">type,</if>
+			<if test="createTime !=null">createTime,</if>
+			<if test="orderColumn !=null">orderColumn,</if>
+			<if test="remark !=null">remark,</if>
+			<if test="wordId !=null">wordId,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id !=null">#{id},</if>
+			<if test="columnOne !=null">#{columnOne},</if>
+			<if test="columnTwo !=null">#{columnTwo},</if>
+			<if test="columnThree !=null">#{columnThree},</if>
+			<if test="columnFour !=null">#{columnFour},</if>
+			<if test="type !=null">#{type},</if>
+			<if test="createTime !=null">#{createTime},</if>
+			<if test="orderColumn !=null">#{orderColumn},</if>
+			<if test="remark !=null">#{remark},</if>
+			<if test="wordId !=null">#{wordId},</if>
+		</trim>
+	</insert>
+	
+	<select id="getTaskByType" resultType="task">
+		select id,columnOne,columnTwo,columnThree,columnFour from <include refid="tableName"></include>
+		<where>
+		type = #{arg0} and wordId = #{arg1}
+		</where>
+		 order by orderColumn
+	</select>
+	<select id="getAllTask" resultType="task">
+		select id,columnOne,columnTwo,columnThree,columnFour,type,remark from <include refid="tableName"></include>
+		<where>
+		createTime =(select max(createTime) from <include refid="tableName"></include>)
+		</where>
+		 order by orderColumn
+	</select>
+	<select id="getTaskType" resultType="String">
+		select type from <include refid="tableName"></include>
+		<where>
+		createTime =(select max(createTime) from <include refid="tableName"></include>) group by type order by orderColumn
+		</where>
+	</select>
+	<select id="getTaskTypeByWordId" resultType="String">
+		select type from <include refid="tableName"></include>
+		<where>
+		wordId = #{wordId} group by type order by orderColumn
+		</where>
+	</select>
+	<select id="getTaskRemarkById" resultType="string">
+		select remark from <include refid="tableName"></include>
+		<where>
+			id=#{id}
+		</where>
+	</select>
+	<select id ="getTaskById" resultType="task">
+		select * from <include refid="tableName"></include>
+		<where>
+			id = #{taskId}
+		</where>
+	</select>
+	<delete id="deleteByWordId">
+		delete from <include refid="tableName"></include>
+		<where>
+			wordId=#{wordId}
+		</where>
+	</delete>
+	<select id="getIdByWordId" resultType="String">
+		select id from <include refid="tableName"></include>
+		<where>
+			wordId=#{wordId}
+		</where>
+	</select>
+</mapper>

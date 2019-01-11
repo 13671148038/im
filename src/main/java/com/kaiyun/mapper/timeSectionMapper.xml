@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaiyun.dao.TimeSectionDao">
+
+	<sql id="tableName">timesection</sql>	
+	
+	<insert id="add">
+		insert into <include refid="tableName"></include>
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id !=null">id,</if>
+			<if test="time !=null">time,</if>
+			<if test="type !=null">type,</if>
+			<if test="wordId !=null">wordId,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id !=null">#{id},</if>
+			<if test="time !=null">#{time},</if>
+			<if test="type !=null">#{type},</if>
+			<if test="wordId !=null">#{wordId},</if>
+		</trim>
+	</insert>
+	<select id="getNowDa" resultType="Map">
+		select * from <include refid="tableName"></include>
+		<where>
+		time &gt; #{arg0} and type = #{arg1}
+		</where>
+	</select>
+	<update id="update">
+		update <include refid="tableName"></include>
+		<set>
+			<if test="time !=null">time=#{time},</if>
+			<if test="type !=null">type=#{type},</if>
+		</set>
+		<where>
+		id=#{id}
+		</where>
+	</update>
+	<select id="getMaxTimeAndXiaoYuNow" resultType="String">
+		select max(time) from <include refid="tableName"></include>
+		<where>
+		time &lt; #{arg0} and type = #{arg1} and wordId = #{arg2}
+		</where>
+	</select>
+	<delete id="deleteByWordId">
+		delete from <include refid="tableName"></include>
+		<where>
+			wordId=#{wordId}
+		</where>
+	</delete>
+	<select id="getPageDate" resultType="String">
+			select t.time from
+			(select time from <include refid="tableName"></include>
+			<where>
+				type = #{arg0}
+				<if test="arg1 != null">
+				 and time &lt;= #{arg1} 
+				</if>
+				and wordId = #{arg2}
+			</where>
+			) t order by t.time asc
+	</select>
+	<select id="getAll" resultType="String">
+			select time from <include refid="tableName"></include>
+			<where>
+				type=#{arg0} and wordId = #{arg1}
+			</where>
+			  order by time
+	</select>
+	<update id="resetTime">
+		update <include refid="tableName"></include>
+		<set>
+			time=#{resetTime}
+		</set>
+		<where>
+		wordId=#{wordId} and type=#{taskType} and time=#{resetBeforeTime}
+		</where>
+	</update>
+	<update id="resetTimeById">
+		update <include refid="tableName"></include>
+		<set>
+			time=#{resetTime}
+		</set>
+		<where>
+		id = #{id}
+		</where>
+	</update>
+	<select id="selectResetTimeAfterNum" resultType="String">
+		select id from <include refid="tableName"></include>
+		<where>
+			time &gt;= #{resetBeforeTime} and wordId=#{wordId} and type=#{taskType}
+		</where>
+		order by time
+	</select>
+	<select id="getAlltimeXiaoYuNowByWordIdAndType" resultType="String">
+		select time from <include refid="tableName"></include>
+		<where>
+			wordId=#{wordId} and type=#{type} and time &lt;=#{time}
+		</where>
+		order by time
+	</select>
+</mapper>

@@ -1,0 +1,1369 @@
+@import "../lib/reset.css";
+
+body {
+    width: 100%;
+    font-family: '微软雅黑', 'Microsoft Yahei', Helvetica, Arial, sans-serif;
+    overflow: auto;
+    display: -webkit-flex;
+}
+
+/* 通用样式 */
+.set-flex-x {
+    display: -webkit-flex;
+}
+
+.set-flex-column {
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+}
+
+
+.flex-all {
+    -webkit-flex: 1;
+}
+
+button.buleBgBtn {
+    background-color: #05a4f2;
+    color: white;
+    height: 25px;
+    width: 65px;
+    text-align: center;
+    line-height: 25px;
+    border: 0;
+}
+
+/*
+侧边栏
+*/
+.bky-left {
+    width: 200px;
+    background-color: #081c26;
+}
+
+.admin {
+    width: 100%;
+    height: 100px;
+    background-color: #081c26;
+    font-size: 18px;
+    color: white;
+    display: flex;
+}
+
+.admin > span.user-img {
+    display: inline-block;
+    width: 62px;
+    height: 62px;
+    margin: 20px 20px 0 44px;
+}
+
+.admin > span.user-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.admin > span.user-name {
+    margin-top: 40px;
+}
+
+/*
+手风琴
+*/
+
+.bky-panel-list {
+    color: white;
+    background-color: #102634;
+}
+
+.bky-panel-title {
+    height: 55px;
+    line-height: 55px;
+    font-size: 14px;
+    position: relative;
+    padding-left: 70px;
+}
+
+.bky-panel-body {
+    height: 40px;
+    line-height: 40px;
+    /* padding: 0 0 0 87px; */
+    text-align:center;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/*.bky-panel-body:hover {
+    background-color: #0280db;
+}*/
+
+.bky-panel-body.active {
+    background-color: #0280db;
+}
+
+.bky-panelMore {
+    cursor: pointer;
+}
+
+.bky-panelMore + div.bky-panel-content {
+    display: none;
+}
+
+.bky-panel-title:before {
+    position: absolute;
+    left: 32px;
+    top: 2px;
+}
+
+.bky-panelMore:after {
+    content: url("../images/more.png");
+    position: absolute;
+    right: 18px;
+}
+
+.bky-panelOne:before {
+    content: url("../images/icon_folder.png");
+    /*content: '';
+    background: url("../images/icon_folder.png") no-repeat;
+    background-size: 17px 12px;
+    width: 17px;
+    height: 12px;
+    left: 33px;
+    top: 20px;*/
+}
+
+.bky-panelTwo:before {
+    content: url("../images/icon_share.png");
+}
+
+.bky-panelThree:before {
+    content: url("../images/icon_tags.png");
+
+}
+
+.bky-panelFore:before {
+    content: url("../images/icon_db.png");
+}
+
+.bky-panelFive:before {
+    content: url("../images/icon_user.png");
+
+}
+
+.bky-panelSix:before {
+    content: url("../images/icon_computer.png");
+}
+
+/*
+右侧内容
+*/
+.right {
+    -webkit-flex: 1;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+}
+
+.header {
+    display: -webkit-flex;
+    height: 50px;
+    -webkit-justify-content: space-between;
+    padding: 15px 39px 0 22px;
+    background-color: white;
+}
+
+.logo {
+    color: #0f4a62;
+    font-size: 16px;
+    position: relative;
+    padding-left: 45px;
+}
+
+.logo:before {
+    content: '';
+    background: url("../images/logo.png") no-repeat;
+    background-size: 80% 80%;
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    left: 0;
+    top: -7px;
+}
+
+.opera span {
+    position: relative;
+    color: #2287b0;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-top: 20px;
+    display: inline-block;
+    width: 15px;
+    height: 20px;
+    font-size: 0;
+}
+
+.opera span.home:before {
+    position: absolute;
+    content: '';
+    background: url("../images/icon_home.png") no-repeat;
+    background-size: 80% 80%;
+    width: 24px;
+    height: 24px;
+    left: 1px;
+    top: -20px;
+}
+
+.opera span.manger:before {
+    position: absolute;
+    content: '';
+    background: url("../images/icon_manger.png") no-repeat;
+    background-size: 80% 80%;
+    width: 24px;
+    height: 24px;
+    left: 5px;
+    top: -19px;
+}
+
+.opera span.exit:before {
+    position: absolute;
+    content: '';
+    background: url("../images/icon_exit.png") no-repeat;
+    background-size: 80% 80%;
+    width: 24px;
+    height: 24px;
+    left: 4px;
+    top: -19px;
+}
+
+/* 右侧内容部分 */
+.right0-content {
+    -webkit-flex: 1;
+   /*  background-color: #e9edf5; */
+     padding: 0 23px 0;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.index-fixed-search.right0-content {
+   /* overflow: initial;
+    overflow-x: initial;*/
+}
+
+.folder-list-part {
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.right0-content p.right0-content-title {
+    color: #0f4a62;
+    height: 45px;
+    line-height: 45px;
+    background-color: transparent;
+    position: relative;
+    padding-left: 22px;
+    font-size: 14px;
+}
+
+.right0-content p.right0-content-title:before {
+    content: url("../images/site.png");
+    position: absolute;
+    left: 2px;
+    top: 1px;
+}
+
+.container-box {
+    width: 100%;
+    -webkit-flex: 1;
+    background-color: white;
+    margin-bottom: 25px;
+    padding-right: 45px;
+}
+
+.container-box .opera-fold {
+    height: 140px;
+    width: 100%;
+}
+
+.container-box dl.opera-fold {
+    padding: 40px 0 0 43px;
+    display: -webkit-flex;
+}
+
+.container-box dl.opera-fold dt {
+    width: 68px;
+}
+
+.container-box dl.opera-fold dd {
+    -webkit-flex: 1;
+    padding-left: 30px;
+    font-size: 14px;
+    color: #696969;
+}
+
+.container-box dl.opera-fold dd p {
+    margin-bottom: 20px;
+}
+
+.container-box dl.opera-fold dd p:last-of-type {
+    margin-bottom: 0;
+}
+
+.fold-info span:first-of-type, .fold-date span:first-child {
+    margin-right: 42px;
+}
+
+.container-box dl.opera-fold dd p.fold-opera span {
+    position: relative;
+    margin-right: 25px;
+    padding-left: 30px;
+    font-size: 12px;
+}
+
+.container-box p.fold-opera span.download {
+    padding-left: 23px;
+}
+
+.container-box p.fold-opera span.download:after {
+    content: url("../images/icon_d.png");
+    position: absolute;
+    left: 5px;
+    top: -2px;
+}
+
+.container-box dl.opera-fold dd p.fold-opera span.cancel:after {
+    content: url("../images/icon_c.png");
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+.container-box p.fold-opera span.rename:after {
+    content: url("../images/icon_re.png");
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+.container-box p.fold-opera span.copy:after {
+    content: url("../images/icon_copy.png");
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+.container-box p.fold-opera span.move:after {
+    content: url("../images/icon_move.png");
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+.container-box p.fold-opera span.share:after {
+    content: url("../images/icon_s.png");
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+.right0-content h4 {
+    height: 65px;
+    line-height: 65px;
+    font-size: 14px;
+    color: #727272;
+    padding-left: 28px;
+
+}
+
+.search-box {
+    padding-left: 28px;
+}
+
+.search-box span {
+    display: inline-block;
+    width: 369px;
+    height: 37px;
+    border: 1px solid #eaeaea;
+    margin-right: 20px;
+    position: relative;
+}
+
+.search-box span input {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding-left: 34px;
+}
+
+.search-box span input::-webkit-input-placeholder {
+    color: #9c9c9c;
+}
+
+.search-box span:before {
+    position: absolute;
+    content: url("../images/icon+serch.png");
+    left: 8px;
+    top: 8px;
+}
+
+.search-box button {
+    width: 120px;
+    height: 36px;
+    background-color: #05a4f2;
+    color: white;
+    font-size: 14px;
+    border: 0;
+}
+
+.container-box p.cancel {
+    height: 42px;
+    padding-right: 17px;
+}
+
+.container-box p.cancel span {
+    height: 42px;
+    position: relative;
+    font-size: 0;
+    float: right;
+}
+
+.container-box p.cancel span:after {
+    position: absolute;
+    content: url("../images/icon_cancel.png");
+    right: 0;
+    top: 0;
+}
+
+/* table表格内容 */
+
+.table-box {
+    border-top: 2px solid #00a9ee;
+}
+
+.table-box div.row {
+    height: 47px;
+    line-height: 47px;
+    color: #4e4e4e;
+    font-size: 12px;
+}
+
+.table-box div.row:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+.table-box div.row .col-sm-4,
+.table-box div.row {
+    padding: 0;
+    margin: 0;
+}
+
+.table-box div.row:first-of-type .col-sm-4:nth-of-type(2),
+.table-box div.row:first-of-type .col-sm-4:first-of-type {
+    border-right: 2px solid white;
+}
+
+.table-box div.row .col-sm-4:first-of-type {
+    padding-left: 93px;
+
+}
+
+.table-box div.row .col-sm-4:nth-of-type(2),
+.table-box div.row .col-sm-4:nth-of-type(3) {
+    text-align: center;
+}
+
+.table-box div.row span.checkBox {
+    margin-right: 65px;
+}
+
+.table-box div.row span.checkBox + span {
+    position: relative;
+}
+
+.table-box div.row span.checkBox + span:before {
+    content: url("../images/icon_key.png");
+    position: absolute;
+    left: -38px;
+    top: -7px;
+}
+
+.dialog {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99999;
+    display: none;
+}
+
+.dialog-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding: 10px;
+    background-color: white;
+    margin-left: -150px;
+    margin-top: -100px;
+    z-index: 9999999;
+    width: 300px;
+    height: 200px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: none;
+}
+
+.dialog-content h5 {
+    height: 30px;
+    line-height: 30px;
+}
+
+.dialog-content h5 span {
+    float: right;
+    cursor: pointer;
+}
+
+/*
+我的文件夹 CSS
+*/
+.bky-panelThreeLock:before {
+    position: absolute;
+    content: '';
+    background: url("../images/icon_lock.png") no-repeat;
+    background-size: 17px 20px;
+    width: 17px;
+    height: 20px;
+    left: 33px;
+    top: 20px;
+}
+
+.container-folder {
+    padding-right: 0;
+    background-color: #e9edf5;
+}
+
+.folder-list {
+    height: 93px;
+    background-color: white;
+    margin-bottom: 12px;
+    padding-left: 24px;
+}
+
+.container-folder dl.opera-fold {
+    height: initial;
+    padding: 12px 15px 0px 0px;
+
+}
+
+.container-folder dl.opera-fold dd p {
+    margin-bottom: 5px;
+}
+
+.container-folder p.fold-opera span.nickname:after {
+    content: url('../images/icon_nicknme.png');
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+.container-folder dl .fold-info span.update {
+    color: #b4b4b4;
+    font-size: 12px;
+}
+
+.container-folder .fold-info span:first-of-type {
+    margin-right: 10px;
+}
+
+.container-folder .fold-info span a {
+    color: #696969;
+}
+
+/*.container-folder dl.opera-fold dd p.fold-info {
+    margin-bottom: 20px;
+}*/
+
+.container-folder dl.opera-fold dd p.fold-date {
+    margin-bottom: 6px;
+}
+
+.container-folder .fold-date span {
+    display: inline-block;
+    width: 56px;
+    height: 19px;
+    line-height: 19px;
+    text-align: center;
+    background-color: #c9c9c9;
+    font-size: 14px;
+    color: white;
+    border-radius: 10px;
+    margin-right: 5px;
+    padding: 0 7px;
+    cursor: pointer;
+}
+
+.container-folder .fold-date span:first-child {
+    margin-right: 5px;
+}
+
+.folder-list > p {
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #696969;
+    padding-right: 15px;
+    position: relative;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.container-folder .folder-list:nth-of-type(even) {
+    height: 93px;
+}
+
+.container-folder p.fold-opera span.upload:after {
+    content: url('../images/icon_upload.png');
+    position: absolute;
+    left: 5px;
+    top: -2px;
+}
+
+.folder-search {
+    height: 100px;
+    background-color: white;
+    margin-bottom: 15px;
+    padding: 10px 0 14px 15px;
+    position: relative;
+}
+
+.folder-search.search-box span {
+    margin-right: 10px;
+    box-shadow: 0 0 0 1px #05a4f2;
+}
+
+.folder-right {
+    margin-top: 10px;
+}
+
+.folder-search button.folder-tag {
+    width: initial;
+    height: initial;
+    background-color: initial;
+    color: #696969;
+    margin-top: 7px;
+}
+
+.folder-search .folder-tag i {
+    font-style: normal;
+    display: inline-block;
+    width: 56px;
+    height: 19px;
+    border-radius: 10px;
+    background-color: #c9c9c9;
+    color: #696969;
+    margin-right: 5px;
+    padding: 0 7px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.folder-search .folder-create {
+    background-color: #fcb528;
+    height: 20px;
+    line-height: 19px;
+    font-size: 12px;
+    position: absolute;
+    right: 15px;
+    top: 18px;
+}
+.dw{
+    width: 100%;
+    height: 42px;
+    border-bottom: 1px solid #f2f2f2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+.folder-create {
+    border: 0px;
+    text-align: center;
+    line-height: 22px;
+    width: 102px;
+    height: 25px;
+    background-color: #ffad2e;
+    position: absolute;
+    right: 144px;
+    color: white;
+    padding: 0 1.4%;
+}
+.folder-delete {
+    border: 0px;
+    text-align: center;
+    line-height: 22px;
+    width: 92px;
+    height: 25px;
+    background-color: #ff7e5a;
+    color: white;
+    position: absolute;
+    right: 10px;
+    padding: 0 1.4%;
+}
+/*
+日志管理
+*/
+.log-box {
+    padding: 12px;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+}
+
+.out-box {
+    border: 1px solid #eeeeee;
+    -webkit-flex: 1;
+    -webkit-flex-direction: column;
+
+}
+
+.out-box .log-tab {
+    height: 32px;
+    border-bottom: 2px solid #00a9ee;
+}
+
+.out-box .log-tab li {
+    display: inline-block;
+    width: 95px;
+    height: 30px;
+    line-height: 28px;
+    text-align: center;
+}
+
+.out-box .log-tab li a {
+    color: #464646;
+    font-size: 13px;
+}
+
+.out-box .log-tab li.log-tab-active {
+    background-color: #00a9ee;
+}
+
+.out-box .log-tab li.log-tab-active a {
+    color: white;
+}
+
+.log-date-search {
+    height: 25px;
+    margin: 10px 8px;
+    font-size: 12px;
+    display: -webkit-flex;
+}
+
+.log-date-search span.inputBox {
+    display: inline-block;
+    width: 75px;
+    border: 1px solid #eaeaea;
+    height: 25px;
+
+}
+
+.log-date-search span.inputBox input {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+.log-date-search span.log-arrive {
+    margin: 0 15px;
+    padding-top: 4px;
+}
+
+.log-date-search > button {
+    background-color: #05a4f2;
+    color: white;
+    height: 25px;
+    width: 65px;
+    text-align: center;
+    line-height: 25px;
+    border: 0;
+    margin-left: 15px;
+}
+
+.log-list {
+    -webkit-flex: 1;
+}
+
+.log-list .row {
+    height: 38px;
+    line-height: 38px;
+    margin: 0;
+    font-size: 12px;
+}
+
+.log-list .row:nth-of-type(odd) {
+    background-color: #f0f0f0;
+}
+
+.log-list .row > div {
+    padding: 0;
+    text-align: center;
+    color: #878787;
+}
+
+.log-pager {
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+    font-size: 12px;
+    color: #585050;
+}
+
+.log-pager span input {
+    width: 40px;
+    height: 20px;
+    text-align: center;
+    margin: 0 6px;
+}
+
+.log-pager span.prevPage, .log-pager span.nextPage {
+    margin: 0 12px;
+}
+
+/*
+初始化页面样式修改，优化，重写 admin,home,register,abstract
+*/
+/* admin 管理员添加 */
+.add-manager {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background: url("../images/top_background.jpg") no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    position: relative;
+    font-size: 16px;
+    padding-left: 100px;
+}
+
+.add-manager:before {
+    content: '';
+    background: url("../images/admin_logo.png") no-repeat;
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 50px;
+    top: 10px;
+}
+
+.admin-content {
+    -webkit-flex: 1;
+}
+
+.admin-content h4 ,.both-h4-title{
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+    margin-top: 50px;
+    padding-left: 60px;
+}
+
+.admin-content h4 span.admin-line,
+.both-h4-title span.admin-line{
+    display: inline-block;
+    width: 3px;
+    height: 20px;
+    font-size: 0;
+    background-color: #04a4f2;
+    margin-right: 8px;
+}
+
+.admin-c-body {
+    width: 490px;
+    height: 340px;
+    margin: 60px auto 0;
+    border: 1px solid #eaeaea;
+    padding-top: 30px;
+}
+
+.admin-c-body > p {
+    margin-bottom: 20px;
+    padding-left: 100px;
+}
+
+.admin-c-body > p.admin-user-light {
+    text-align: center;
+    padding-left: 0;
+}
+
+.admin-user-light img {
+    display: inline-block;
+    width: 82px;
+    height: 76px;
+
+}
+
+.admin-c-body p > span.label-tag {
+    font-size: 14px;
+    font-style: normal;
+    color: #464646;
+    margin-right: 20px;
+}
+
+.admin-c-body p > span.label-tag.labelTagOne {
+    margin-left: 26px;
+}
+
+.admin-c-body p > span.int-tag {
+    display: inline-block;
+    width: 150px;
+    height: 25px;
+    border: 1px solid #eaeaea;
+    font-size: 12px;
+}
+
+.admin-c-body p > span.int-tag input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+.admin-c-body > p.next-prev-btn {
+    text-align: center;
+    padding-left: 0;
+    margin-top: 25px;
+}
+
+.next-prev-btn button {
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    background-color: #05a4f2;
+    border: none;
+    color: white;
+    margin-left: 10px;
+}
+
+/* home 系统欢迎页 */
+.home-content .admin-c-body {
+    border: none;
+    margin: auto;
+    width: initial;
+    height: initial;
+}
+
+.home-title .col-sm-12 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+.home-content .container {
+    width: 80%;
+    color: #05a1f5;
+    padding-top: 100px;
+}
+
+.home-content .container .home-cont .home-left {
+    text-align: center;
+    font-size: 50px;
+    opacity: 0.5;
+    margin-top: 20px;
+}
+
+.home-content .container .home-cont .home-right {
+    text-align: left;
+    font-size: 20px;
+    border-left: 1px solid black;
+}
+
+.home-cont .home-right p {
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+.home-footer .col-sm-12 {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.home-footer .col-sm-12 button {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    background-color: #05a4f2;
+    border: none;
+    color: white;
+    margin-left: 10px;
+}
+
+/* abstract 初始化摘要 */
+
+/* 优化部分 */
+.register-box .both-h4-title {
+    margin-top: 20px;
+}
+
+.both-h4-title.equip-info {
+    margin-top: 0;
+}
+
+.register-box > div .both-h4-title {
+    padding-left: 145px;
+    margin-bottom: 15px;
+    margin-top: 25px;
+}
+
+.unit {
+    margin-bottom: 10px;
+}
+
+.abstract-footer {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.abstract-footer button {
+    width: 100px;
+    height: 35px;
+    line-height: 23px;
+}
+
+.abstract-footer button a {
+    color: white;
+}
+
+.abstract-footer button.first-btn {
+    margin-right: 20px;
+}
+
+/* register */
+.register-containerOne .equip-row {
+    margin-bottom: 5px;
+}
+
+.register-containerTwo .unit {
+    margin-bottom: 15px;
+}
+
+.equip-row .equip-name {
+    display: inline-block;
+    width: 200px;
+    height: 30px;
+    font-size: 14px;
+    border: 1px solid #eaeaea;
+}
+
+.equip-row .equip-name input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.equip-info-box h4.both-h4-title {
+    margin-top: 5px;
+}
+
+.register-containerTwo .unit em {
+    font-style: normal;
+    color: red;
+    margin-right: 5px;
+}
+
+.register-containerTwo .unit span.margin-l {
+    margin-left: 16px;
+}
+
+.register-containerTwo .unit span.equip-margin-l {
+    margin-left: 20px;
+}
+
+.unit span.equip-name-rad,
+.direction{
+    margin-left: 15px;
+}
+
+.unit .selOne {
+    margin-left: 47px;
+}
+
+.unit .col-sm-10 .equip-name {
+    width: 350px;
+}
+
+.equip-name-rad label {
+    color: #585656;
+    font-weight: normal;
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.unit .col-sm-10 .sel {
+    width: 100px;
+    height: 30px;
+    border: 1px solid #eaeaea;
+}
+
+span.gray-cont {
+    color: #999999;
+}
+
+/* 上传图片 */
+.upload-td > p {
+    margin-left: 5px;
+}
+
+.upload-td > p span.photoCover {
+    width: 157px;
+
+}
+
+.upload-td > p.set-flex-x > input {
+    width: 45px;
+    height: 30px;
+    font-size: 12px;
+    background-color: white;
+    border: 1px solid #eaeaea;
+    border-right: none;
+}
+/* 数据检索 */
+.high-search {
+    margin-top: 15px;
+}
+
+.high-search table tr td,
+.high-search table tr {
+    display: -webkit-flex;
+    display: -moz-flex;
+    font-size: 14px;
+}
+
+.search-box .high {
+    margin-left: 10px;
+}
+
+.high-search table tr td {
+    padding-left: 10px;
+}
+
+.high-search table tr td:first-of-type {
+    padding-left: 0;
+}
+
+.high-search table tr td em {
+    font-style: normal;
+    padding-top: 5px;
+}
+
+.high-search table tr td p {
+    width: 155px;
+    height: 30px;
+    line-height: 28px;
+    font-size: 14px;
+    border: 1px solid #eaeaea;
+}
+
+.high-search table tr td p input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding-left: 5px;
+    display: inherit;
+}
+
+.high-search table tr td p input::-webkit-input-placeholder {
+    font-size: 14px;
+    color: #9c9c9c;
+}
+/* 系统参数配置 sys-param-conf */
+.sys-param-conf {
+    background-color: white;
+    font-size: 14px;
+    margin: 23px 0 20px 0;
+}
+
+.sys-param-conf.register-box .both-h4-title{
+    height: 30px;
+    line-height: 30px;
+}
+
+.sys-param-conf .abstract-footer {
+    margin: 30px 0 20px 0;
+}
+
+.sys-param-conf .col-sm-4 > i {
+    font-style: normal;
+    color: #999;
+}
+
+.sys-param-conf .col-sm-4 > span > input::-webkit-input-placeholder {
+    color: #999;
+}
+
+.sys-param-conf .col-sm-4 > span > input {
+    color: #999;
+}
+
+.sys-param-conf .register-containerOne .equip-name-box em {
+    font-style: normal;
+    color: red;
+}
+
+.sys-param-conf .both-h4-title {
+    color: #333;
+}
+
+.sys-param-conf .equip-name-rad label:first-of-type {
+    margin-right: 10px;
+}
+
+.sys-param-conf .col-sm-4 .equip-name-rad label {
+    font-size: 14px;
+    color: #333;
+}
+
+.sys-param-conf .register-containerTwo .unit span.equip-margin-l,
+.sys-param-conf .unit span.equip-name-rad.direction {
+    margin-left: 14px;
+}
+
+.sys-param-conf .unit span.equip-name-rad {
+    margin-left: 18px;
+}
+
+.sys-param-conf .unit .selOne {
+    margin-left: 43px;
+}
+
+.sys-param-conf .equip-row .upload-td .equip-name {
+    width: 155px;
+}
+.sys-param-conf .unit .col-sm-10 .equip-name {
+    width: 346px;
+}
+
+.sys-param-conf .row-sm > span {
+    overflow: hidden;
+}
+
+.sys-param-conf .row-sm {
+    line-height: 30px;
+}
+
+.equip-row .range-box  .equip-name {
+    width: 90px;
+    height: 30px;
+    text-align: -moz-center;
+    text-align: -webkit-center;
+    line-height: 24px;
+}
+
+.range-box > em {
+    font-style: normal;
+}
+
+.modify-admin {
+    background-color: white;
+    text-align: -webkit-center;
+    text-align: -moz-center;
+    font-size: 12px;
+    color: #696969;
+    padding-bottom: 33px;
+    margin-top: 20px;
+
+}
+
+.modify-admin .mod-title {
+    height: 18px;
+}
+
+.modify-admin .mod-body {
+    padding-top: 55px;
+}
+
+.modify-admin td em {
+    color: red;
+    font-style: normal;
+}
+
+.modify-admin .mod-body td span {
+    margin-bottom: 15px;
+}
+
+.modify-admin td label {
+    font-weight: normal;
+    color: #696969;
+}
+
+.modify-admin tr td.rad-td {
+    padding-left: 11px;
+}
+
+.modify-admin .mod-footer {
+    height: 25px;
+    position: initial;
+    width: initial;
+    bottom: initial;
+    margin-top: 70px;
+}
+
+/* 增加样式 */
+.overflowTextDot .share-link-dv {
+    height:38px;
+    display: -webkit-box;
+    display: -moz-box;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -ms-box-orient: vertical;
+    -o-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.log-list .row > div.share-link-dv {
+    padding: 0 5px;
+    position: relative;
+    text-align: left;
+}
+
+.log-list .row > div.share-link-dv:after {
+    content: '...';
+    position: absolute;
+    right: 0px;
+    top: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
